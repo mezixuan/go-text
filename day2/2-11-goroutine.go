@@ -6,17 +6,19 @@ import (
 )
 
 //这个将用于子go程使用
-func display() {
+func display(num int) {
 	count := 1
 	for {
-		fmt.Println("这是子go程 : ", count)
+		fmt.Println("这是子go程 : ", num, "当前count值", count)
 		count++
-		time.Sleep(1 * time.Second)
+		//time.Sleep(1 * time.Second)
 	}
 }
 
 func main() {
-	go display()
+	for i := 0; i < 3; i++{
+		go display(i)
+	}
 	//主go程
 	count := 1
 	for {
